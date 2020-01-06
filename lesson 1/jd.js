@@ -61,13 +61,20 @@ let appData = {
             alert("Доход в месяц с вашего депозита: " + appData.mathIncome);
         }
     },
-    chooseIncome: function() {
+    chooseIncome: function() {        // дополнительный доход
         let items = prompt("Что принесет дополнительный доход? (Перечслите через запятую!)", "");
-        while (items != "string" || items == "" || items == null) {
+        while ((typeof(items)) != "string" || items == "" || items == null) {
             items = prompt("Что принесет дополнительный доход? (Перечслите через запятую!)", "");
         }
         appData.income = items.split(', ');
         appData.income.push(prompt("Может что нибудь еще?"));
         appData.income.sort();
+        appData.income.forEach(function(item, i, mass) {
+            console.log("Способы доп. заработка: " + (i+1), item);
+        });  
     }
 };
+
+for (let i in appData) {
+    console.log("Наша программа включает в себя данные: " + i);
+}
